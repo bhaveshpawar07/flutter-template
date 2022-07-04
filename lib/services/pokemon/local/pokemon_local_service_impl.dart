@@ -12,8 +12,10 @@ class PokemonLocalServiceImpl extends DatabaseAccessor<PokemonDatabase>
   PokemonLocalServiceImpl(PokemonDatabase attachedDb) : super(attachedDb);
 
   @override
-  Stream<List<LocalPokemonDetail>> getLocalPokemon() {
-    return select(localPokemonDetails).watch();
+  Future<LocalPokemonDetail?> getLocalPokemon({required String searchTerm}) {
+    return (select(localPokemonDetails)
+          ..where((tbl) => tbl.name.equals(searchTerm.toLowerCase())))
+        .getSingleOrNull();
   }
 
   @override
