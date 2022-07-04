@@ -19,9 +19,13 @@ class PokemonRepositoryImpl extends PokemonRepository {
       required this.localPokemonMapper});
 
   @override
-  Stream<List<Pokemon>> getSavedPokemons() {
-    return pokemonLocalService.getLocalPokemon().map((listOfPokemon) =>
-        domainPokemonMapper.mapLocalPokemonList(listOfPokemon));
+  Future<Pokemon> getSavedPokemons({required String searchTerm}) async {
+    final LocalPokemonDetail? localPokemon = await pokemonLocalService.getLocalPokemon(searchTerm: searchTerm);
+    if(localPokemon == null){
+      return searchPokemon(searchTerm: searchTerm);
+    }else{
+      return domainPokemonMapper.mapLocalPokemon(localPokemon);
+    }
   }
 
   @override
@@ -32,9 +36,11 @@ class PokemonRepositoryImpl extends PokemonRepository {
   }
 
   @override
-  Future<List<Pokemon>> searchPokemon({required String searchTerm}) async {
-    final remotePokemonList =
+  Future<Pokemon> searchPokemon({required String searchTerm}) async {
+    final remotePokemon =
         await pokemonRemoteService.searchPokemon(searchTerm: searchTerm);
-    return domainPokemonMapper.mapList(remotePokemonList);
+    final Pokemon pokemon = domainPokemonMapper.map(remotePokemon);
+    savePokemonDetails(pokemon: pokemon);
+    return pokemon;
   }
 }
