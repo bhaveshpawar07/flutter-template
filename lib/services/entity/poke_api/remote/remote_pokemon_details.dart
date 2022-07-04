@@ -4,7 +4,7 @@ import 'remote_pokemon_sprites.dart';
 part 'remote_pokemon_details.g.dart';
 
 @JsonSerializable(fieldRename: FieldRename.snake)
-class RemotePokemonDetails{
+class RemotePokemonDetails {
   final int height;
   final int id;
   final String name;

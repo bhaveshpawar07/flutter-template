@@ -13,20 +13,18 @@ part 'pokemon_app_db.g.dart';
 @DriftDatabase(
   tables: [LocalPokemonDetails],
 )
-class PokemonDatabase extends _$PokemonDatabase{
+class PokemonDatabase extends _$PokemonDatabase {
   PokemonDatabase() : super(_openConnection());
 
   @override
   int get schemaVersion => 1;
 }
 
-LazyDatabase _openConnection(){
-  return LazyDatabase(() async{
+LazyDatabase _openConnection() {
+  return LazyDatabase(() async {
     final dbFolder = await getApplicationDocumentsDirectory();
-    final file = File(p.join(dbFolder.path,'pokemon_app_db.sqlite'));
-    return NativeDatabase(
-      file,
-      logStatements: FlavorConfig.instance.values.logSqlStatements
-    );
+    final file = File(p.join(dbFolder.path, 'pokemon_app_db.sqlite'));
+    return NativeDatabase(file,
+        logStatements: FlavorConfig.instance.values.logSqlStatements);
   });
 }
