@@ -20,10 +20,11 @@ class PokemonRepositoryImpl extends PokemonRepository {
 
   @override
   Future<Pokemon?> getSavedPokemons({required String searchTerm}) async {
-    final LocalPokemonDetail? localPokemon = await pokemonLocalService.getLocalPokemon(searchTerm: searchTerm);
-    if(localPokemon == null || (checkDifferenceInHrs(localPokemon.date)>3)){
+    final LocalPokemonDetail? localPokemon =
+        await pokemonLocalService.getLocalPokemon(searchTerm: searchTerm);
+    if (localPokemon == null || (checkDifferenceInHrs(localPokemon.date) > 3)) {
       return searchPokemon(searchTerm: searchTerm);
-    }else{
+    } else {
       return domainPokemonMapper.mapLocalPokemon(localPokemon);
     }
   }
@@ -39,19 +40,19 @@ class PokemonRepositoryImpl extends PokemonRepository {
   Future<Pokemon?> searchPokemon({required String searchTerm}) async {
     final remotePokemon =
         await pokemonRemoteService.searchPokemon(searchTerm: searchTerm);
-    if(remotePokemon!=null){
+    if (remotePokemon != null) {
       final Pokemon pokemon = domainPokemonMapper.map(remotePokemon);
       savePokemonDetails(pokemon: pokemon);
       return pokemon;
-    }else{
+    } else {
       return null;
     }
   }
 
-  int checkDifferenceInHrs(String timeFromDB){
-    final dbTime=DateTime.parse(timeFromDB);
-    final currentTime=DateTime.now().toUtc();
-    final difference=currentTime.difference(dbTime);
+  int checkDifferenceInHrs(String timeFromDB) {
+    final dbTime = DateTime.parse(timeFromDB);
+    final currentTime = DateTime.now().toUtc();
+    final difference = currentTime.difference(dbTime);
     return difference.inHours;
   }
 }
