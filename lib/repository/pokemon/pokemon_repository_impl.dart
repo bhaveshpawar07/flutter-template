@@ -39,7 +39,7 @@ class PokemonRepositoryImpl extends PokemonRepository {
   @override
   Future<Pokemon?> searchPokemon({required String searchTerm}) async {
     final remotePokemon =
-        await pokemonRemoteService.searchPokemon(searchTerm: searchTerm);
+        await pokemonRemoteService.searchPokemon(searchTerm: searchTerm.toLowerCase());
     if (remotePokemon != null) {
       final Pokemon pokemon = domainPokemonMapper.map(remotePokemon);
       savePokemonDetails(pokemon: pokemon);
