@@ -6,12 +6,6 @@ import 'package:flutter_template/services/entity/poke_api/remote/remote_pokemon_
 abstract class DomainPokemonMapper
     extends Mapper<RemotePokemonDetails, Pokemon> {
   Pokemon mapLocalPokemon(LocalPokemonDetail from);
-
-  List<Pokemon> mapLocalPokemonList(List<LocalPokemonDetail> from) =>
-      from.map((e) => mapLocalPokemon(e)).toList();
-
-  List<Pokemon> mapRemotePokemonList(List<RemotePokemonDetails> from) =>
-      from.map((e) => map(e)).toList();
 }
 
 class DomainPokemonMapperImpl extends DomainPokemonMapper {
