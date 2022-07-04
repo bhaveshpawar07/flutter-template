@@ -19,7 +19,7 @@ class PokemonRepositoryImpl extends PokemonRepository {
       required this.localPokemonMapper});
 
   @override
-  Future<Pokemon> getSavedPokemons({required String searchTerm}) async {
+  Future<Pokemon?> getSavedPokemons({required String searchTerm}) async {
     final LocalPokemonDetail? localPokemon = await pokemonLocalService.getLocalPokemon(searchTerm: searchTerm);
     if(localPokemon == null){
       return searchPokemon(searchTerm: searchTerm);
@@ -36,11 +36,15 @@ class PokemonRepositoryImpl extends PokemonRepository {
   }
 
   @override
-  Future<Pokemon> searchPokemon({required String searchTerm}) async {
+  Future<Pokemon?> searchPokemon({required String searchTerm}) async {
     final remotePokemon =
         await pokemonRemoteService.searchPokemon(searchTerm: searchTerm);
-    final Pokemon pokemon = domainPokemonMapper.map(remotePokemon);
-    savePokemonDetails(pokemon: pokemon);
-    return pokemon;
+    if(remotePokemon!=null){
+      final Pokemon pokemon = domainPokemonMapper.map(remotePokemon);
+      savePokemonDetails(pokemon: pokemon);
+      return pokemon;
+    }else{
+      return null;
+    }
   }
 }
