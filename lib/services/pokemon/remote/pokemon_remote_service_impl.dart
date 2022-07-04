@@ -8,11 +8,12 @@ class PokemonRemoteServiceImpl implements PokemonRemoteService {
   PokemonRemoteServiceImpl({required this.dio});
 
   @override
-  Future<List<RemotePokemonDetails>> searchPokemon(
+  Future<RemotePokemonDetails> searchPokemon(
       {required String searchTerm}) async {
     final response = await dio.get("api/v2/pokemon/$searchTerm");
-    return (response.data as List)
-        .map((e) => RemotePokemonDetails.fromJson(e as Map<String, dynamic>))
-        .toList();
+    return response.data;
+    // return (response.data as List)
+    // .map((e) => RemotePokemonDetails.fromJson(e as Map<String,dynamic>))
+    // .toList();
   }
 }

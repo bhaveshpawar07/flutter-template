@@ -5,7 +5,7 @@ part 'remote_pokemon_other.g.dart';
 
 @JsonSerializable(fieldRename: FieldRename.snake)
 class RemotePokemonOther {
-  @JsonKey(name:"dream_world")
+  @JsonKey(name: "dream_world")
   final RemotePokemonDreamWorld dreamWorld;
 
   RemotePokemonOther({required this.dreamWorld});
