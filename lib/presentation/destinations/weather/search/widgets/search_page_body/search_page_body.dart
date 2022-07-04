@@ -25,7 +25,7 @@ class SearchPageBody extends HookConsumerWidget {
     //   ));
     // });
 
-    callApi(){
+    callApi() {
       final viewModel = ref.read(searchViewModelProvider.notifier);
       viewModel.onIntent(SearchScreenIntent.search(
         searchTerm: textController.text,
@@ -35,8 +35,8 @@ class SearchPageBody extends HookConsumerWidget {
     return SearchPageBodyContent(
       textController: textController,
       searchHint: LocaleKeys.startTypingToSearch.tr,
-      child: const SearchPageResults(),
       apiCall: callApi,
+      child: const SearchPageResults(),
     );
   }
 }

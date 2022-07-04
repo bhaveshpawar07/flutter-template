@@ -50,7 +50,7 @@ extension ServiceModule on GetIt {
         }
 
         return WeatherRemoteServiceImpl(
-          dio:get(),
+          dio: get(),
         );
       },
     );
@@ -67,7 +67,7 @@ extension ServiceModule on GetIt {
 
     // Pokemon Dio
     registerLazySingleton(
-          () => providePokemonDio(
+      () => providePokemonDio(
         interceptors: [],
       ),
     );
@@ -77,19 +77,19 @@ extension ServiceModule on GetIt {
 
     // Pokemon
     registerLazySingleton<PokemonRemoteService>(
-          () {
+      () {
         if (FlavorConfig.instance.values.useFakeData) {
           return FakePokemonRemoteService();
         }
 
         return PokemonRemoteServiceImpl(
-          dio:get(),
+          dio: get(),
         );
       },
     );
 
     registerLazySingleton<PokemonLocalService>(
-          () {
+      () {
         if (FlavorConfig.instance.values.useFakeData) {
           return FakePokemonLocalService();
         }

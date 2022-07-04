@@ -1,6 +1,6 @@
 import 'package:drift/drift.dart';
 
-class LocalPokemonDetails extends Table{
+class LocalPokemonDetails extends Table {
   IntColumn get id => integer()();
   IntColumn get height => integer()();
   TextColumn get name => text()();

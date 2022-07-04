@@ -4,13 +4,14 @@ import 'remote_pokemon_sprites.dart';
 part 'remote_pokemon_details.g.dart';
 
 @JsonSerializable(fieldRename: FieldRename.snake)
-class RemotePokemonDetails{
+class RemotePokemonDetails {
   final int height;
   final int id;
   final String name;
   final int weight;
   final RemotePokemonSpecies species;
   final RemotePokemonSprites sprites;
+  final DateTime dateTime = DateTime.now().toUtc();
 
   RemotePokemonDetails({
     required this.height,
