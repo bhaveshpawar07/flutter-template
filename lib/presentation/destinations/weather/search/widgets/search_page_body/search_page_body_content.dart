@@ -4,12 +4,14 @@ class SearchPageBodyContent extends StatelessWidget {
   final TextEditingController textController;
   final String searchHint;
   final Widget child;
+  final Function() apiCall;
 
   const SearchPageBodyContent({
     Key? key,
     required this.textController,
     required this.searchHint,
     required this.child,
+    required this.apiCall
   }) : super(key: key);
 
   @override
@@ -20,12 +22,15 @@ class SearchPageBodyContent extends StatelessWidget {
         direction: Axis.vertical,
         children: [
           TextField(
-            controller: textController,
+             controller: textController,
             decoration: InputDecoration(
               border: const OutlineInputBorder(),
               labelText: searchHint,
             ),
           ),
+          ElevatedButton(
+              onPressed: apiCall,
+              child: Text("Search")),
           child,
         ],
       ),
