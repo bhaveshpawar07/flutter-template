@@ -21,7 +21,7 @@ class PokemonRepositoryImpl extends PokemonRepository {
   @override
   Future<Pokemon?> getSavedPokemons({required String searchTerm}) async {
     final LocalPokemonDetail? localPokemon = await pokemonLocalService.getLocalPokemon(searchTerm: searchTerm);
-    if(localPokemon == null){
+    if(localPokemon == null || (checkDifferenceInHrs(localPokemon.date)>3)){
       return searchPokemon(searchTerm: searchTerm);
     }else{
       return domainPokemonMapper.mapLocalPokemon(localPokemon);
@@ -46,5 +46,12 @@ class PokemonRepositoryImpl extends PokemonRepository {
     }else{
       return null;
     }
+  }
+
+  int checkDifferenceInHrs(String timeFromDB){
+    final dbTime=DateTime.parse(timeFromDB);
+    final currentTime=DateTime.now().toUtc();
+    final difference=currentTime.difference(dbTime);
+    return difference.inHours;
   }
 }
