@@ -4,13 +4,15 @@ class SearchPageBodyContent extends StatelessWidget {
   final TextEditingController textController;
   final String searchHint;
   final Widget child;
+  final Function() apiCall;
 
-  const SearchPageBodyContent({
-    Key? key,
-    required this.textController,
-    required this.searchHint,
-    required this.child,
-  }) : super(key: key);
+  const SearchPageBodyContent(
+      {Key? key,
+      required this.textController,
+      required this.searchHint,
+      required this.child,
+      required this.apiCall})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -26,6 +28,7 @@ class SearchPageBodyContent extends StatelessWidget {
               labelText: searchHint,
             ),
           ),
+          ElevatedButton(onPressed: apiCall, child: const Text("Search")),
           child,
         ],
       ),
