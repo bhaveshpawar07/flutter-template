@@ -27,7 +27,6 @@ void main() {
       widget: SearchPageBodyContent(
         textController: textEditingController,
         searchHint: searchHint,
-        apiCall: () {  },
         child: Container(),
       ),
     );
@@ -50,7 +49,6 @@ void main() {
       widget: SearchPageBodyContent(
         textController: textEditingController,
         searchHint: searchHint,
-        apiCall: () {  },
         child: Container(),
       ),
     );
@@ -77,7 +75,6 @@ void main() {
       widget: SearchPageBodyContent(
         textController: textEditingController,
         searchHint: "",
-        apiCall: () {  },
         child: child,
       ),
     );

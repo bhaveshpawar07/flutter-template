@@ -64,7 +64,7 @@ extension ServiceModule on GetIt {
         return WeatherLocalServiceImpl(get());
       },
     );
-
+    GetIt.I.allowReassignment = true;
     // Pokemon Dio
     registerLazySingleton(
       () => providePokemonDio(

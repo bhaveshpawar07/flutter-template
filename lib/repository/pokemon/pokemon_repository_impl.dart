@@ -1,4 +1,5 @@
-import 'package:flutter_template/domain/entity/pokemon/pokemon.dart';
+import 'package:flutter_template/foundation/extensions/object_ext.dart';
+import 'package:flutter_template/presentation/entity/pokemon/ui_pokemon.dart';
 import 'package:flutter_template/repository/pokemon/pokemon_repository.dart';
 import 'package:flutter_template/services/base/database/pokemon/pokemon_app_db.dart';
 import 'package:flutter_template/services/pokemon/remote/pokemon_remote_service.dart';
@@ -19,9 +20,10 @@ class PokemonRepositoryImpl extends PokemonRepository {
       required this.localPokemonMapper});
 
   @override
-  Future<Pokemon?> getSavedPokemons({required String searchTerm}) async {
+  Future<UIPokemon?> getSavedPokemons({required String searchTerm}) async {
     final LocalPokemonDetail? localPokemon =
         await pokemonLocalService.getLocalPokemon(searchTerm: searchTerm);
+    logD("localPokemon $localPokemon");
     if (localPokemon == null || (checkDifferenceInHrs(localPokemon.date) > 3)) {
       return searchPokemon(searchTerm: searchTerm);
     } else {
@@ -30,18 +32,19 @@ class PokemonRepositoryImpl extends PokemonRepository {
   }
 
   @override
-  Future<void> savePokemonDetails({required Pokemon pokemon}) async {
+  Future<void> savePokemonDetails({required UIPokemon pokemon}) async {
     final LocalPokemonDetailsCompanion localPokemon =
         localPokemonMapper.map(pokemon);
     return await pokemonLocalService.savePokemonDetails(pokemon: localPokemon);
   }
 
   @override
-  Future<Pokemon?> searchPokemon({required String searchTerm}) async {
-    final remotePokemon =
-        await pokemonRemoteService.searchPokemon(searchTerm: searchTerm.toLowerCase());
+  Future<UIPokemon?> searchPokemon({required String searchTerm}) async {
+    final remotePokemon = await pokemonRemoteService.searchPokemon(
+        searchTerm: searchTerm.toLowerCase());
+    logD(remotePokemon.toString());
     if (remotePokemon != null) {
-      final Pokemon pokemon = domainPokemonMapper.map(remotePokemon);
+      final UIPokemon pokemon = domainPokemonMapper.map(remotePokemon);
       savePokemonDetails(pokemon: pokemon);
       return pokemon;
     } else {

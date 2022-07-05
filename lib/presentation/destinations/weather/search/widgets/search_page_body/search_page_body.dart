@@ -18,24 +18,16 @@ class SearchPageBody extends HookConsumerWidget {
     final textController =
         useTextEditingController.fromValue(TextEditingValue.empty);
 
-    // textController.addListener(() {
-    //   final viewModel = ref.read(searchViewModelProvider.notifier);
-    //   viewModel.onIntent(SearchScreenIntent.search(
-    //     searchTerm: textController.text,
-    //   ));
-    // });
-
-    callApi() {
+    textController.addListener(() {
       final viewModel = ref.read(searchViewModelProvider.notifier);
       viewModel.onIntent(SearchScreenIntent.search(
         searchTerm: textController.text,
       ));
-    }
+    });
 
     return SearchPageBodyContent(
       textController: textController,
       searchHint: LocaleKeys.startTypingToSearch.tr,
-      apiCall: callApi,
       child: const SearchPageResults(),
     );
   }

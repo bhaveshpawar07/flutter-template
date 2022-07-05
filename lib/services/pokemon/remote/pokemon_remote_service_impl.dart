@@ -10,10 +10,15 @@ class PokemonRemoteServiceImpl implements PokemonRemoteService {
   @override
   Future<RemotePokemonDetails?> searchPokemon(
       {required String searchTerm}) async {
-    final response = await dio.get("api/v2/pokemon/$searchTerm");
-    if (response.statusCode == 200) {
-      return response.data;
-    } else {
+    try {
+      final response = await dio.get("api/v2/pokemon/$searchTerm");
+      if (response.statusCode == 200) {
+        return RemotePokemonDetails.fromJson(
+            response.data as Map<String, dynamic>);
+      } else {
+        return null;
+      }
+    } catch (e) {
       return null;
     }
 

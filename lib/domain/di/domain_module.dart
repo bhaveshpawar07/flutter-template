@@ -95,7 +95,9 @@ extension DomainModule on GetIt {
               themeRepository: get(),
             ));
     //pokemon
-    registerFactory<SearchPokemonUseCase>(() => SearchPokemonUseCaseImpl(pokemonRepository: get()));
-    registerFactory<GetPokemonStreamUseCase>(() => GetPokemonStreamUseCaseImpl(pokemonRepository: get()));
+    registerFactory<SearchPokemonUseCase>(
+        () => SearchPokemonUseCaseImpl(pokemonRepository: get()));
+    registerFactory<GetPokemonStreamUseCase>(
+        () => GetPokemonStreamUseCaseImpl(pokemonRepository: get()));
   }
 }

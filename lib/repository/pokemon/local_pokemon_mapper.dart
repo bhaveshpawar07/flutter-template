@@ -1,20 +1,21 @@
 import 'package:drift/drift.dart';
-import 'package:flutter_template/domain/entity/pokemon/pokemon.dart';
 import 'package:flutter_template/foundation/mapper/mapper.dart';
 import 'package:flutter_template/services/base/database/pokemon/pokemon_app_db.dart';
 
+import '../../presentation/entity/pokemon/ui_pokemon.dart';
+
 abstract class LocalPokemonMapper
-    extends Mapper<Pokemon, LocalPokemonDetailsCompanion> {}
+    extends Mapper<UIPokemon, LocalPokemonDetailsCompanion> {}
 
 class LocalPokemonMapperImpl extends LocalPokemonMapper {
   @override
-  LocalPokemonDetailsCompanion map(Pokemon from) {
+  LocalPokemonDetailsCompanion map(UIPokemon from) {
     return LocalPokemonDetailsCompanion(
       date: Value(from.dateTime.toString()),
       height: Value(from.height),
-      id: Value(from.id),
+      id: Value(from.pokemonId),
       name: Value(from.name),
-      url: Value(from.url),
+      url: Value(from.imgUrl),
       weight: Value(from.weight),
     );
   }
