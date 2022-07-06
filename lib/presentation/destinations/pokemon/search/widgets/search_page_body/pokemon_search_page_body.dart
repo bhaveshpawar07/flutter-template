@@ -27,7 +27,7 @@ class PokemonSearchPageBody extends HookConsumerWidget {
 
     return PokemonSearchBodyContent(
       textController: textController,
-      searchHint: LocaleKeys.startTypingToSearch.tr,
+      searchHint: context.tr(LocaleKeys.startTypingToSearch),
       apiCall: callApi,
       child: const PokemonSearchPageResult(),
     );

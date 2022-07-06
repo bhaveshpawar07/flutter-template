@@ -25,8 +25,8 @@ class PokemonSearchPageResult extends ConsumerWidget {
       pokemon: pokemon,
       searchTerm: viewModel.searchTerm,
       intentHandlerCallback: viewModel.onIntent,
-      searchResultsPlaceholder: LocaleKeys.searchResultsAppearHere.tr,
-      noResultsPlaceholder: LocaleKeys.noResultsFound.tr,
+      searchResultsPlaceholder: context.tr(LocaleKeys.searchResultsAppearHere),
+      noResultsPlaceholder: context.tr(LocaleKeys.noResultsFound),
     );
   }
 }

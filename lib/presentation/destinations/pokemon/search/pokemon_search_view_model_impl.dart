@@ -1,4 +1,3 @@
-import 'package:flutter_template/foundation/extensions/string_ext.dart';
 import 'package:flutter_template/navigation/weather/search/search_navigator.dart';
 import 'package:flutter_template/presentation/destinations/pokemon/search/pokemon_search_screen_intent.dart';
 import 'package:flutter_template/presentation/destinations/pokemon/search/pokemon_search_screen_state.dart';
@@ -23,7 +22,7 @@ class PokemonSearchViewModelImpl extends PokemonSearchViewModel {
 
   static PokemonSearchScreenState get _initialState => PokemonSearchScreenState(
         toolbar: UIToolbar(
-          title: LocaleKeys.searchPageTitle.tr,
+          title: LocaleKeys.searchPageTitle,
           hasBackButton: true,
         ),
         showLoading: false,
