@@ -3,6 +3,10 @@ import 'package:flutter_template/repository/date/date_repository.dart';
 import 'package:flutter_template/repository/date/date_repository_impl.dart';
 import 'package:flutter_template/repository/date/date_time_mapper.dart';
 import 'package:flutter_template/repository/date/time_mapper.dart';
+import 'package:flutter_template/repository/pokemon/domain_pokemon_mapper.dart';
+import 'package:flutter_template/repository/pokemon/local_pokemon_mapper.dart';
+import 'package:flutter_template/repository/pokemon/pokemon_repository.dart';
+import 'package:flutter_template/repository/pokemon/pokemon_repository_impl.dart';
 import 'package:flutter_template/repository/preferences/preferences_repository.dart';
 import 'package:flutter_template/repository/preferences/preferences_repository_impl.dart';
 import 'package:flutter_template/repository/theme/theme_repository.dart';
@@ -58,5 +62,15 @@ extension RepositoryModule on GetIt {
     registerLazySingleton<ThemeRepository>(() => ThemeRepositoryImpl(
           preferencesRepo: get(),
         ));
+
+    //Pokemon Mappers
+    registerFactory<DomainPokemonMapper>(() => DomainPokemonMapperImpl());
+    registerFactory<LocalPokemonMapper>(() => LocalPokemonMapperImpl());
+
+    registerLazySingleton<PokemonRepository>(() => PokemonRepositoryImpl(
+        pokemonRemoteService: get(),
+        pokemonLocalService: get(),
+        domainPokemonMapper: get(),
+        localPokemonMapper: get()));
   }
 }

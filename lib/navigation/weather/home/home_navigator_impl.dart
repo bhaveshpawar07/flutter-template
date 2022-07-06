@@ -10,8 +10,11 @@ class HomeNavigatorImpl implements HomeNavigator {
 
   @override
   void toSearchScreen() {
-    navigator.to(SearchRoute(
-      searchScreen: const SearchScreen(),
+    // navigator.to(SearchRoute(
+    //   searchScreen: const SearchScreen(),
+    // ));
+    navigator.to(PokemonSearchRoute(
+      searchScreen: const PokemonSearchScreen(),
     ));
   }
 }
