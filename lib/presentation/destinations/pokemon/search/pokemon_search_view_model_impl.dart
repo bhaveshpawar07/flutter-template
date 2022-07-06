@@ -3,11 +3,10 @@ import 'package:flutter_template/navigation/weather/search/search_navigator.dart
 import 'package:flutter_template/presentation/destinations/pokemon/search/pokemon_search_screen_intent.dart';
 import 'package:flutter_template/presentation/destinations/pokemon/search/pokemon_search_screen_state.dart';
 import 'package:flutter_template/presentation/destinations/pokemon/search/pokemon_search_view_model.dart';
+import 'package:flutter_template/presentation/entity/base/ui_toolbar.dart';
+import 'package:flutter_template/presentation/intl/translations/translation_keys.dart';
 import 'package:flutter_template/repository/pokemon/pokemon_repository.dart';
 import 'package:rxdart/rxdart.dart';
-
-import '../../../entity/base/ui_toolbar.dart';
-import '../../../intl/translations/translation_keys.dart';
 
 class PokemonSearchViewModelImpl extends PokemonSearchViewModel {
   final SearchNavigator searchNavigator;

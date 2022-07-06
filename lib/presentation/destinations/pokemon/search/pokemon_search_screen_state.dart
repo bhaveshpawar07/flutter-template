@@ -1,8 +1,7 @@
 import 'package:flutter_template/presentation/entity/base/ui_toolbar.dart';
 import 'package:flutter_template/presentation/entity/pokemon/ui_pokemon.dart';
+import 'package:flutter_template/presentation/entity/screen/screen_state.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-
-import '../../../entity/screen/screen_state.dart';
 
 part 'pokemon_search_screen_state.freezed.dart';
 

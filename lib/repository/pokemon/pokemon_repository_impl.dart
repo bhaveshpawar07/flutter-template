@@ -2,9 +2,9 @@ import 'package:flutter_template/foundation/extensions/object_ext.dart';
 import 'package:flutter_template/presentation/entity/pokemon/ui_pokemon.dart';
 import 'package:flutter_template/repository/pokemon/pokemon_repository.dart';
 import 'package:flutter_template/services/base/database/pokemon/pokemon_app_db.dart';
+import 'package:flutter_template/services/pokemon/local/pokemon_local_service.dart';
 import 'package:flutter_template/services/pokemon/remote/pokemon_remote_service.dart';
 
-import '../../services/pokemon/local/pokemon_local_service.dart';
 import 'domain_pokemon_mapper.dart';
 import 'local_pokemon_mapper.dart';
 

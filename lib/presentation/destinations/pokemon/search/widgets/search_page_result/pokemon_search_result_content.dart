@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_template/presentation/base/intent/intent_handler_callback.dart';
 import 'package:flutter_template/presentation/base/widgets/responsive/responsive_builder.dart';
 import 'package:flutter_template/presentation/destinations/pokemon/search/pokemon_search_screen_intent.dart';
 import 'package:flutter_template/presentation/destinations/pokemon/search/widgets/list/ui_pokemon_list_item.dart';
 import 'package:flutter_template/presentation/destinations/pokemon/search/widgets/search_page_loading_shimmer/pokemon_search_page_loading_shimmer.dart';
 import 'package:flutter_template/presentation/entity/pokemon/ui_pokemon.dart';
-
-import '../../../../../base/intent/intent_handler_callback.dart';
 
 class PokemonSearchResultContent extends StatelessWidget {
   final bool showLoading;

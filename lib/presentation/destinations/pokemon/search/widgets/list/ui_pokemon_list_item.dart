@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-
-import '../../../../../entity/pokemon/ui_pokemon.dart';
+import 'package:flutter_template/presentation/entity/pokemon/ui_pokemon.dart';
 
 class UIPokemonListItem extends StatelessWidget {
   final UIPokemon pokemon;

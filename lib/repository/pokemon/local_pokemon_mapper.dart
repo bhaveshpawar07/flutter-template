@@ -1,8 +1,7 @@
 import 'package:drift/drift.dart';
 import 'package:flutter_template/foundation/mapper/mapper.dart';
+import 'package:flutter_template/presentation/entity/pokemon/ui_pokemon.dart';
 import 'package:flutter_template/services/base/database/pokemon/pokemon_app_db.dart';
-
-import '../../presentation/entity/pokemon/ui_pokemon.dart';
 
 abstract class LocalPokemonMapper
     extends Mapper<UIPokemon, LocalPokemonDetailsCompanion> {}
