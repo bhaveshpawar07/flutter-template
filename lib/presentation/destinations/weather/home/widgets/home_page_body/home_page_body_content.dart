@@ -22,7 +22,7 @@ class HomePageBodyContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    EasyLocalization.of(context)?.locale;
+    EasyLocalization.of(context);
     // logD("homepageBody called");
     if (weatherList.isEmpty) {
       return Padding(
