@@ -28,7 +28,10 @@ class PokemonSearchBodyContent extends StatelessWidget {
               labelText: searchHint,
             ),
           ),
-          ElevatedButton(onPressed: apiCall, child: const Text("Search")),
+          ElevatedButton(
+            onPressed: apiCall,
+            child: const Text("Search"),
+          ),
           child,
         ],
       ),
