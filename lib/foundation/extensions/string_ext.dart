@@ -13,6 +13,11 @@ extension StringExt on String {
   // }
 }
 
+///
+/// Extension on context to make sure any string that uses [tr] gets translated.
+/// Not using the context won't translate the string if its [tr] is being used in non changing components eg. viewModel
+///
+
 extension ContextExt on BuildContext {
   String tr(String key) {
     try {
