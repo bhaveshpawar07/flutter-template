@@ -25,27 +25,25 @@ class PokemonRepositoryImpl extends PokemonRepository {
         await pokemonLocalService.getLocalPokemon(searchTerm: searchTerm);
     logD("localPokemon $localPokemon");
     if (localPokemon == null || (checkDifferenceInHrs(localPokemon.date) > 3)) {
-      return searchPokemon(searchTerm: searchTerm);
+      return _searchPokemon(searchTerm: searchTerm);
     } else {
       return domainPokemonMapper.mapLocalPokemon(localPokemon);
     }
   }
 
-  @override
-  Future<void> savePokemonDetails({required UIPokemon pokemon}) async {
+  Future<void> _savePokemonDetails({required UIPokemon pokemon}) async {
     final LocalPokemonDetailsCompanion localPokemon =
         localPokemonMapper.map(pokemon);
     return await pokemonLocalService.savePokemonDetails(pokemon: localPokemon);
   }
 
-  @override
-  Future<UIPokemon?> searchPokemon({required String searchTerm}) async {
+  Future<UIPokemon?> _searchPokemon({required String searchTerm}) async {
     final remotePokemon = await pokemonRemoteService.searchPokemon(
         searchTerm: searchTerm.toLowerCase());
     logD(remotePokemon.toString());
     if (remotePokemon != null) {
       final UIPokemon pokemon = domainPokemonMapper.map(remotePokemon);
-      savePokemonDetails(pokemon: pokemon);
+      _savePokemonDetails(pokemon: pokemon);
       return pokemon;
     } else {
       return null;
