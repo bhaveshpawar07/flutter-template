@@ -1,4 +1,3 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_template/foundation/extensions/string_ext.dart';
 import 'package:flutter_template/presentation/base/intent/intent_handler_callback.dart';
@@ -22,7 +21,7 @@ class HomePageBodyContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    EasyLocalization.of(context);
+    // EasyLocalization.of(context);
     // logD("homepageBody called");
     if (weatherList.isEmpty) {
       return Padding(
