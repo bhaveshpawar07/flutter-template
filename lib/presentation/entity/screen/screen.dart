@@ -19,3 +19,10 @@ class HomeScreen extends Screen {
   @override
   String get path => Routes.home;
 }
+
+class PokemonSearchScreen extends Screen {
+  const PokemonSearchScreen() : super._();
+
+  @override
+  String get path => Routes.pokemonSearch;
+}
