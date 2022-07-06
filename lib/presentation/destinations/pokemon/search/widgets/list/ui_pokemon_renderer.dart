@@ -14,6 +14,7 @@ class UIPokemonRenderer
       StreamSink<PokemonSearchScreenIntent> sink) {
     return UIPokemonListItem(
       pokemon: data,
+      orientation: 1,
     );
   }
 }

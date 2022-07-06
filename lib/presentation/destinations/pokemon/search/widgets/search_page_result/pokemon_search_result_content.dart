@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_template/presentation/base/widgets/responsive/responsive_builder.dart';
 import 'package:flutter_template/presentation/destinations/pokemon/search/pokemon_search_screen_intent.dart';
 import 'package:flutter_template/presentation/destinations/pokemon/search/widgets/list/ui_pokemon_list_item.dart';
 import 'package:flutter_template/presentation/destinations/pokemon/search/widgets/search_page_loading_shimmer/pokemon_search_page_loading_shimmer.dart';
@@ -8,6 +9,7 @@ import '../../../../../base/intent/intent_handler_callback.dart';
 
 class PokemonSearchResultContent extends StatelessWidget {
   final bool showLoading;
+
   // final List<UIListItem> searchList;
   final UIPokemon? pokemon;
   final String searchTerm;
@@ -41,16 +43,15 @@ class PokemonSearchResultContent extends StatelessWidget {
     } else {
       return Expanded(
         child: SingleChildScrollView(
-          child: UIPokemonListItem(pokemon: pokemon!),
+          child: ResponsiveBuilder(
+              builder: (context, mediaQueryData, boxConstraints) {
+            return UIPokemonListItem(
+              pokemon: pokemon!,
+              orientation:
+                  mediaQueryData.orientation == Orientation.landscape ? 2 : 1,
+            );
+          }),
         ),
-        // child: ResponsiveBuilder(
-        //     builder: (context, mediaQueryData, boxConstraints) {
-        //   return UIList<PokemonSearchScreenIntent>(
-        //     renderers: const {UIPokemon: UIPokemonRenderer()},
-        //     intentHandler: intentHandlerCallback,
-        //     items: searchList,
-        //   );
-        // }),
       );
     }
   }
