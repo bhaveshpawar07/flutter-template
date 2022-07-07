@@ -24,7 +24,8 @@ class PokemonRepositoryImpl extends PokemonRepository {
     final LocalPokemonDetail? localPokemon =
         await pokemonLocalService.getLocalPokemon(searchTerm: searchTerm);
     logD("localPokemon $localPokemon");
-    if (localPokemon == null || (checkDifferenceInHrs(localPokemon.date) > 3)) {
+    if (localPokemon == null ||
+        (_checkDifferenceInHrs(localPokemon.date) > 3)) {
       return _searchPokemon(searchTerm: searchTerm);
     } else {
       return domainPokemonMapper.mapLocalPokemon(localPokemon);
@@ -50,7 +51,7 @@ class PokemonRepositoryImpl extends PokemonRepository {
     }
   }
 
-  int checkDifferenceInHrs(String timeFromDB) {
+  int _checkDifferenceInHrs(String timeFromDB) {
     final dbTime = DateTime.parse(timeFromDB);
     final currentTime = DateTime.now().toUtc();
     final difference = currentTime.difference(dbTime);
