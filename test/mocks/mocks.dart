@@ -60,3 +60,6 @@ class MockPokemonRemoteService extends Mock implements PokemonRemoteService {}
 class MockDomainPokemonMapper extends Mock implements DomainPokemonMapper {}
 
 class MockLocalPokemonMapper extends Mock implements LocalPokemonMapper {}
+
+// class MockPokemonSearchPageBody extends Mock implements PokemonSearchPageBody{}
+// class MockPokemonSearchBodyContent extends Mock implements PokemonSearchBodyContent{}

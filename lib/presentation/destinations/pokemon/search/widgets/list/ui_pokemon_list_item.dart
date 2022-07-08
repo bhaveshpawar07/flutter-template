@@ -29,6 +29,7 @@ class UIPokemonListItem extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
+        // SvgPicture.network(
         SvgPicture.network(
           pokemon.imgUrl,
           height: 250,
