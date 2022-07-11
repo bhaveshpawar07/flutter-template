@@ -17,6 +17,8 @@ import 'package:flutter_template/services/weather/local/weather_local_service.da
 import 'package:flutter_template/services/weather/remote/weather_remote_service.dart';
 import 'package:mocktail/mocktail.dart';
 
+import 'mock_functions.dart';
+
 // Service
 class MockWeatherLocalService extends Mock implements WeatherLocalService {}
 
@@ -63,3 +65,5 @@ class MockLocalPokemonMapper extends Mock implements LocalPokemonMapper {}
 
 // class MockPokemonSearchPageBody extends Mock implements PokemonSearchPageBody{}
 // class MockPokemonSearchBodyContent extends Mock implements PokemonSearchBodyContent{}
+
+class MockVoidCallback extends Mock implements FunctionCall {}

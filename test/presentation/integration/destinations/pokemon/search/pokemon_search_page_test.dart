@@ -11,8 +11,8 @@ import 'package:flutter_template/presentation/intl/translations/translation_keys
 import 'package:flutter_test/flutter_test.dart';
 import 'package:get_it/get_it.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:mocktail_image_network/mocktail_image_network.dart';
 
+import '../../../../../mocks/mocktail_network_image.dart';
 import '../../../../../mocks/viewmodels/fake_pokemon_search_view_model.dart';
 import '../../../../../test_models/pokemon/uiPokemon.dart';
 import '../../../../base/test_helpers.dart';
@@ -113,7 +113,7 @@ void main() {
   testWidgets(
       "Given search results are not empty, When non empty search term is present, Then results should be displayed",
       (tester) async {
-    await mockNetworkImages(() async {
+    await mockNetworkImagesSvg("svg", () async {
       // Given
       await _loadPage(tester);
 
@@ -123,8 +123,6 @@ void main() {
       await tester.pump();
 
       // Then
-      expect(
-          FormatException, FormatException); //This is for the svg.networkImage
       expect(find.byType(TextField), findsOneWidget);
       expect(find.byType(ElevatedButton), findsOneWidget);
       expect(find.text(LocaleKeys.searchResultsAppearHere), findsNothing);
